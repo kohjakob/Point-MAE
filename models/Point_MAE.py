@@ -10,8 +10,9 @@ from utils.checkpoint import get_missing_parameters_message, get_unexpected_para
 from utils.logger import *
 import random
 from knn_cuda import KNN
-from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
 
+# Omit building chamfer_dist to prevent version conflicts for now: 
+# from extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL2
 
 class Encoder(nn.Module):   ## Embedding module
     def __init__(self, encoder_channel):
@@ -368,11 +369,13 @@ class Point_MAE(nn.Module):
         # loss
         self.build_loss_func(self.loss)
 
-    def build_loss_func(self, loss_type):
+    def build_loss_func(self, loss_type):        
+        raise NotImplementedError("For classify-unseen-objects, building chamfer_dist was omitted for now to prevent version conflicts")
+
         if loss_type == "cdl1":
-            self.loss_func = ChamferDistanceL1().cuda()
+            self.loss_func = ChamferDistance().cuda()
         elif loss_type =='cdl2':
-            self.loss_func = ChamferDistanceL2().cuda()
+            self.loss_func = ChamferDistance().cuda()
         else:
             raise NotImplementedError
             # self.loss_func = emd().cuda()

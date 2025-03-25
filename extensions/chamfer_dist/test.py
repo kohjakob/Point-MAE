@@ -17,7 +17,9 @@ import unittest
 from torch.autograd import gradcheck
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)))
-from extensions.chamfer_dist import ChamferFunction
+
+# Omit building chamfer_dist to prevent version conflicts for now: 
+# from extensions.chamfer_dist import ChamferFunction
 
 
 class ChamferDistanceTestCase(unittest.TestCase):
@@ -26,6 +28,8 @@ class ChamferDistanceTestCase(unittest.TestCase):
         y = torch.rand(4, 128, 3).double()
         x.requires_grad = True
         y.requires_grad = True
+
+        raise NotImplementedError("For classify-unseen-objects, building chamfer_dist was omitted for now to prevent version conflicts")
         print(gradcheck(ChamferFunction.apply, [x.cuda(), y.cuda()]))
 
 
