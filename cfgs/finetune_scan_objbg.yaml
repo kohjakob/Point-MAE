@@ -13,11 +13,11 @@ scheduler: {
 }}
 
 dataset : {
-  train : { _base_: cfgs/dataset_configs/ScanObjectNN_objectbg.yaml,
+  train : { _base_: /external/PointMAE/cfgs/dataset_configs/ScanObjectNN_objectbg.yaml,
             others: {subset: 'train'}},
-  val : { _base_: cfgs/dataset_configs/ScanObjectNN_objectbg.yaml,
+  val : { _base_: /external/PointMAE/cfgs/dataset_configs/ScanObjectNN_objectbg.yaml,
             others: {subset: 'test'}},
-  test : { _base_: cfgs/dataset_configs/ScanObjectNN_objectbg.yaml,
+  test : { _base_: /external/PointMAE/cfgs/dataset_configs/ScanObjectNN_objectbg.yaml,
             others: {subset: 'test'}}}
 model : {
   NAME: PointTransformer,
