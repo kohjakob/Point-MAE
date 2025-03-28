@@ -10,6 +10,7 @@ from utils.logger import *
 import cv2
 import numpy as np
 
+from pipeline_conf.conf import PATHS
 
 def test_net(args, config):
     logger = get_logger(args.log_name)
@@ -69,7 +70,7 @@ def test(base_model, test_dataloader, args, config, logger = None):
                 a, b = 0, 0
 
 
-            dataset_name = config.dataset.test._base_.NAME
+            dataset_name = PATHS.base_dir + config.dataset.test._base_.NAME
             if dataset_name == 'ShapeNet':
                 points = data.cuda()
             else:
