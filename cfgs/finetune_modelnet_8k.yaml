@@ -13,11 +13,11 @@ scheduler: {
 }}
 
 dataset : {
-  train : { _base_: PLACEHOLDER_PROJECT_ROOT/classify_unseen_objects/external/PointMAE/cfgs/dataset_configs/ModelNet40.yaml,
+  train : { _base_: cfgs/dataset_configs/ModelNet40.yaml,
             others: {subset: 'train'}},
-  val : { _base_: PLACEHOLDER_PROJECT_ROOT/classify_unseen_objects/external/PointMAE/cfgs/dataset_configs/ModelNet40.yaml,
+  val : { _base_: cfgs/dataset_configs/ModelNet40.yaml,
             others: {subset: 'test'}},
-  test : { _base_: PLACEHOLDER_PROJECT_ROOT/classify_unseen_objects/external/PointMAE/cfgs/dataset_configs/ModelNet40.yaml,
+  test : { _base_: cfgs/dataset_configs/ModelNet40.yaml,
             others: {subset: 'test'}}}
 model : {
   NAME: PointTransformer,

@@ -3,6 +3,8 @@ from easydict import EasyDict
 import os
 from .logger import print_log
 
+from pipeline_conf.conf import PATHS
+
 def log_args_to_file(args, pre='args', logger=None):
     for key, val in args.__dict__.items():
         print_log(f'{pre}.{key} : {val}', logger = logger)
@@ -19,7 +21,7 @@ def merge_new_config(config, new_config):
     for key, val in new_config.items():
         if not isinstance(val, dict):
             if key == '_base_':
-                with open(new_config['_base_'], 'r') as f:
+                with open(PATHS.pointmae + new_config['_base_'], 'r') as f:
                     try:
                         val = yaml.load(f, Loader=yaml.FullLoader)
                     except:
