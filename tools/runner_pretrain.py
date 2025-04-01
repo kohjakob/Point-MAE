@@ -14,6 +14,8 @@ from torchvision import transforms
 from datasets import data_transforms
 from pointnet2_ops import pointnet2_utils
 
+from pipeline_conf.conf import PATHS
+
 train_transforms = transforms.Compose(
     [
         # data_transforms.PointcloudScale(),
@@ -117,7 +119,7 @@ def run_net(args, config, train_writer=None, val_writer=None):
             
             data_time.update(time.time() - batch_start_time)
             npoints = config.dataset.train.others.npoints
-            dataset_name = config.dataset.train._base_.NAME
+            dataset_name = PATHS.base_dir + config.dataset.train._base_.NAME
             if dataset_name == 'ShapeNet':
                 points = data.cuda()
             elif dataset_name == 'ModelNet':

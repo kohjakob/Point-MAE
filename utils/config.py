@@ -21,7 +21,7 @@ def merge_new_config(config, new_config):
     for key, val in new_config.items():
         if not isinstance(val, dict):
             if key == '_base_':
-                with open(PATHS.pointmae + new_config['_base_'], 'r') as f:
+                with open(PATHS.base_dir + new_config['_base_'], 'r') as f:
                     try:
                         val = yaml.load(f, Loader=yaml.FullLoader)
                     except:
